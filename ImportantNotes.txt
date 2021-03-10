@@ -1,3 +1,16 @@
 Spring cloud eureka server peer awareness:
 
 https://medium.com/swlh/spring-cloud-high-availability-for-eureka-b5b7abcefb32
+
+------------------------------------------------------------------
+
+Eureka’s Peer Awareness: Concepts:
+
+We need to take into account some very important concepts about how the Eureka Replica mode works:
+
+1. The Replica mode will NOT work if you use the same hostname in both instances. That means that you need to give your host two different aliases if you want to test this within the same host.
+2. The Replica mode will NOT work if you use different application names in both instances. It makes sense since the application itself is the same, it's just that we're replicating it.
+3. The magic behind the Replica mode is as simple as configuring each instance to register in another one. You can extend this to as many instances as you like, as long as you keep connecting all the edges (A registers in B, B registers in C, C registers in A). In our case, it's just crossing both of them.
+
+
+https://thepracticaldeveloper.com/spring-boot-service-discovery-eureka/
